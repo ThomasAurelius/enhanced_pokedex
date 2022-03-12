@@ -11,13 +11,14 @@ const colors = {
    poison: '#837ad6',
 	ground: '#f4e7da',
 	dragon: '#97b3e6',
+   ice: '#6eb8e9',
 	psychic: '#eaeda1',
    fairy: '#fceaff',
    normal: '#F5F5F5',
 	flying: '#30aae2',
 	fighting: '#E6E0D4',
-	steel: '#979595',
-   ice: '#6eb8e9'
+	steel: '#979595'
+   
 }
 
 const main_types = Object.keys(colors)
