@@ -19,6 +19,7 @@ body {
 .header-image {
 	display: flex;
 	width: 90%;
+	max-width: 800px;
 }
 
 h1 {
