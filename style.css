@@ -13,13 +13,10 @@ body {
 	align-items: center;
 	justify-content: center;
 	margin: 0;
-	width: 100wv;
 }
 
-.header-image {
-	display: flex;
-	width: 90%;
-	max-width: 800px;
+.title_img {
+	max-width: 90vw;
 }
 
 h1 {
@@ -36,14 +33,12 @@ h1 {
 }
 
 .pokemon {
-	display: flex;
 	background-color: #eee;
 	border-radius: 10px;
 	box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
 	margin: 10px;
 	padding: 20px;
 	text-align: center;
-	width: 300px;
 }
 
 .pokemon .img-container {
@@ -55,13 +50,12 @@ h1 {
 }
 
 .pokemon .img-container img {
-	max-width: 80%;
+	max-width: 90%;
 	margin-top: 10px;
 }
 
 .pokemon .info {
 	margin-top: 20px;
-	margin-left: 10px;
 }
 
 .pokemon .info .number {
@@ -73,5 +67,91 @@ h1 {
 
 .pokemon .info .name {
 	margin: 15px 0 7px;
+	letter-spacing: 0.8px;
+	font-size: 1.3rem;
+}
+
+.pokemon-detail {
+	display: flex;
+	background-color: #eee;
+	border-radius: 10px;
+	box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+	margin: 10px;
+	padding: 20px;
+	text-align: center;
+	gap: 1rem;
+}
+
+.pokemon-detail .img-container {
+	background-color: rgba(255, 255, 255, 0.6);
+	border-radius: 50%;
+	width: 260px;
+	height: 260px;
+	text-align: center;
+}
+
+.pokemon-detail .img-container img {
+	max-width: 90%;
+	margin-top: 10px;
+}
+
+.pokemon-detail .info {
+	margin-top: 20px;
+}
+
+.pokemon-detail .info .number {
+	background-color: rgba(0, 0, 0, 0.1);
+	padding: 5px 10px;
+	border-radius: 10px;
+	font-size: 1em;
+}
+
+.pokemon-detail .info .name {
+	margin: 15px 0 7px;
 	letter-spacing: 1px;
+	font-size: 2rem;
+}
+
+.pokemon-detail .info small {
+	font-size: 1rem;
+}
+
+.stats {
+	width: 240px;
+	margin: 0;
+	padding: 0;
+}
+
+.moves {
+	padding-bottom: 10px;
+}
+
+.pokemon:hover,
+.pokemon:focus {
+	transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+	.poke-container {
+		max-width: 360px;
+	}
+}
+
+.bar {
+	background-color: rgb(192, 192, 192);
+	width: 80%;
+	border-radius: 15px;
+}
+
+.skill {
+	background-color: rgb(0, 0, 0);
+	color: white;
+	padding: 0.25%;
+	text-align: right;
+	font-size: 8px;
+	border-radius: 15px;
+}
+
+.html {
+	width: 80%;
 }
