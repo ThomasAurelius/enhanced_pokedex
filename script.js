@@ -54,7 +54,7 @@ const fetchPokemons = async () => {
    const pokemonCards = document.querySelectorAll('.pokemon')
 pokemonCards.forEach((card) => {
    card.addEventListener('click', (e) => {
-      pokeStatsContainer.removeChild
+      
       getPokemonName(e)
       removeAllChildNodes(pokeStatsContainer)
       //add a function to scroll to the top to see it [READY]
