@@ -1,24 +1,42 @@
 
 const pokeContainer = document.getElementById('poke-container')
 const pokeStatsContainer = document.getElementById('poke-stats-container')
-const pokemonCount = 150
+let pokemonStart = 1
+let pokemonEnd = 151
+let pokemonCount = 50
 const colors = {
    fire: '#d82b34',
+   fairy: '#fceaff',
+   bug: '#f8d5a3',
+   psychic: '#eaeda1',
    grass: '#1ad148',
 	electric: '#FCF7DE',
 	water: '#DEF3FD',
+   poison: '#837ad6',
 	ground: '#f4e7da',
 	rock: '#d5d5d4',
+   normal: '#F5F5F5',
 	fairy: '#fceaff',
-	poison: '#837ad6',
-	bug: '#f8d5a3',
-	dragon: '#97b3e6',
-	psychic: '#eaeda1',
+   bug: '#f8d5a3',
+	poison: '#837ad6',	
+	dragon: '#97b3e6',	
+   normal: '#F5F5F5',
 	flying: '#30aae2',
-	fighting: '#E6E0D4',
-	normal: '#F5F5F5',
+	fighting: '#E6E0D4',	
    steel: '#979595',
    ice: '#6eb8e9'
+   
+   
+}
+
+function updateGen(start, end) {
+   while (pokeContainer.firstChild) {
+        pokeContainer.removeChild(pokeContainer.firstChild);
+    }
+   pokemonStart = start
+   pokemonEnd = end
+   
+   fetchPokemons()
 }
 
 const main_types = Object.keys(colors)
@@ -30,7 +48,7 @@ let pokemon_name = "bulbasaur"
 //original code
 
 const fetchPokemons = async () => {
-   for(let i = 1; i <= pokemonCount; i++) {
+   for(let i = pokemonStart; i <= pokemonEnd; i++) {
       await getPokemon(i)
    }
    const pokemonCards = document.querySelectorAll('.pokemon')
@@ -61,39 +79,8 @@ const getPokemon = async (id) => {
    const data = await res.json()
    createPokemonCard(data)
    console.log(data)
+   
 }
-
-
-
-
-
-function sortByProperty(objArray, prop, direction){
-    if (arguments.length<2) throw new Error("ARRAY, AND OBJECT PROPERTY MINIMUM ARGUMENTS, OPTIONAL DIRECTION");
-    if (!Array.isArray(objArray)) throw new Error("FIRST ARGUMENT NOT AN ARRAY");
-    const clone = objArray.slice(0);
-    const direct = arguments.length>2 ? arguments[2] : 1; //Default to ascending
-    const propPath = (prop.constructor===Array) ? prop : prop.split(".");
-    clone.sort(function(a,b){
-        for (let p in propPath){
-                if (a[propPath[p]] && b[propPath[p]]){
-                    a = a[propPath[p]];
-                    b = b[propPath[p]];
-                }
-        }
-        // convert numeric strings to integers
-        a = a.match(/^\d+$/) ? +a : a;
-        b = b.match(/^\d+$/) ? +b : b;
-        return ( (a < b) ? -1*direct : ((a > b) ? 1*direct : 0) );
-    });
-    return clone;
-}
-
-const resultsByObjectId = sortByProperty(results, 'attributes.OBJECTID');
-const resultsByObjectIdDescending = sortByProperty(results, 'attributes.OBJECTID', -1);
-
-
-
-
 
 
 
@@ -114,7 +101,7 @@ const createPokemonCard = (pokemon) => {
    if (poke_type[1]) {
       poke_type2 = poke_type[1]
    } else {
-      poke_type2 = poke_type
+      poke_type2 = poke_type 
    }
 
    const type = main_types.find(type => poke_type.indexOf(type) > -1)
