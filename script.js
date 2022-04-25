@@ -41,8 +41,6 @@ function updateGen(start, end) {
 
 const main_types = Object.keys(colors)
 
-//Step 3: once you get the name pokemon that you clicked on, update this variable  [READY]
-
 let pokemon_name = "bulbasaur"
 
 //original code
@@ -78,8 +76,6 @@ const getPokemon = async (id) => {
    const res = await fetch(url)
    const data = await res.json()
    createPokemonCard(data)
-   console.log(data)
-   
 }
 
 
