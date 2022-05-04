@@ -14,7 +14,7 @@ A pokemon API interface using pokeapi.co to pull pokemon data and display differ
 
 ### Installing
 
--  na
+-  n/a
 
 ### Executing program
 
@@ -24,14 +24,14 @@ https://thomasaurelius.github.io/enhanced_pokedex/
 
 Contributors names and contact info
 
-ex. Thomas Aurelius
-ex. [@thomasaurelius4](https://twitter.com/thomasaurelius4)
+Thomas Aurelius
+[@thomasaurelius4](https://twitter.com/thomasaurelius4)
 
 ## Version History
 
 -  0.5
    -  Added in loading screen
--  0.3
+-  0.4
    -  Added in generation buttons
 -  0.3
    -  Added in stats card onclick function
