@@ -1,3 +1,4 @@
+//sets a 4 second loading screen to give time for pokemon to load.
 setTimeout(function() {
   var element = document.getElementById('loader');
   element.classList += " hidden";
@@ -32,17 +33,21 @@ const colors = {
    
    
 }
+const main_types = Object.keys(colors)
+
+
 
 //show loading screen everytime a generation button gets pushed and api call is made
 function showLoading() {
+   document.getElementById('loader').classList.remove('hidden')
    setTimeout(function() {
    var element = document.getElementById('loader');
    element.classList += " hidden";
    }, 3000);
 }
 
+//used to update start and end API points to match pokemon generations
 function updateGen(start, end) {   
-   //not working
    showLoading()
    while (pokeContainer.firstChild) {
         pokeContainer.removeChild(pokeContainer.firstChild);
@@ -52,10 +57,18 @@ function updateGen(start, end) {
    fetchPokemons()
 }
 
-const main_types = Object.keys(colors)
 
-let pokemon_name = "bulbasaur"
 
+
+//API call
+const getPokemon = async (id) => {
+   const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+   const res = await fetch(url)
+   const data = await res.json()
+   createPokemonCard(data)
+}
+
+//loops through the start and end points, calling the API call function for each, and adding event listeners.
 const fetchPokemons = async () => { 
    for(let i = pokemonStart; i <= pokemonEnd; i++) {
       await getPokemon(i)
@@ -68,25 +81,21 @@ const fetchPokemons = async () => {
    })
 })
 
+//Removes the children from the DOM when changing generations
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
 }
 
+//sets the name for the pokemonstatscard API
 function getPokemonName(e) {
-   pokemon_name = e.target.getAttribute('id')   
+   pokemon_name = e.currentTarget.getAttribute('id')   
    fetchPokemonStats()   
    }
 }
 
-const getPokemon = async (id) => {
-   const url = `https://pokeapi.co/api/v2/pokemon/${id}`
-   const res = await fetch(url)
-   const data = await res.json()
-   createPokemonCard(data)
-}
-
+//create the smaller pokemon card
 const createPokemonCard = (pokemon) => {
    const pokemonEl = document.createElement('div')
    pokemonEl.classList.add('pokemon')  
@@ -139,20 +148,22 @@ fetchPokemons()
 // Stats card
 
 
-const fetchPokemonStats = async () => {
-     await getPokemonStats(pokemon_name)
-  }
+let pokemon_name = ""
 
+  //API Call
 const getPokemonStats = async (name) => {
    const url = `https://pokeapi.co/api/v2/pokemon/${name}`
    const res = await fetch(url)
    const data = await res.json()
-   createPokemonStatCard(data)
-   
-   
-     
+   createPokemonStatCard(data)     
 }
 
+//calls the API function with the name as parameter
+const fetchPokemonStats = async () => {
+     await getPokemonStats(pokemon_name)
+  }
+
+  //creates the pokemon stat card
 const createPokemonStatCard = (pokemon) => {
    const pokemonStatsEl = document.createElement('div')
    pokemonStatsEl.classList.add('pokemon-detail')
@@ -173,9 +184,7 @@ const createPokemonStatCard = (pokemon) => {
    }
 
    const type = main_types.find(type => poke_type.indexOf(type) > -1)
-
    const type2 = main_types.find(type => poke_type2.indexOf(type) > -1)
-
 
    const color = colors[type]
    const color2 = colors[type2]
@@ -224,19 +233,13 @@ const createPokemonStatCard = (pokemon) => {
          <h3 class="stats">Speed: ${pokemon.stats[5].base_stat}
          <div class="bar">
             <div style="width:${pokemon.stats[5].base_stat}%" class="skill">${pokemon.stats[5].base_stat}</div>
-         </div>
-       
+         </div>       
        </div>
     </div>
-   `
-
-  
+   ` 
    
    pokemonStatsEl.innerHTML = pokemonStatsInnerHTML
    
    pokeStatsContainer.appendChild(pokemonStatsEl)
-
-   
-
 }
 
