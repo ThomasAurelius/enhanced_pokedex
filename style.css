@@ -179,13 +179,14 @@ h1 {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: gray;
-	color: white;
+	color: #00428a;
 	opacity: 1;
 	transition: 0.5s;
 	visibility: visible;
 	margin-inline: auto;
 	text-align: center;
+	background: #efefbb;
+	background: linear-gradient(to right, #d4d3dd, #efefbb);
 }
 
 #loader.hidden {
