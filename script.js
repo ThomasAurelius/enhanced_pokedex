@@ -1,7 +1,7 @@
 setTimeout(function() {
   var element = document.getElementById('loader');
   element.classList += " hidden";
-}, 3000);
+}, 4000);
 
 const pokeContainer = document.getElementById('poke-container')
 const pokeStatsContainer = document.getElementById('poke-stats-container')
