@@ -184,6 +184,8 @@ h1 {
 	opacity: 1;
 	transition: 0.5s;
 	visibility: visible;
+	margin-inline: auto;
+	text-align: center;
 }
 
 #loader.hidden {

@@ -33,6 +33,7 @@ const colors = {
    
 }
 
+//show loading screen everytime a generation button gets pushed and api call is made
 function showLoading() {
    setTimeout(function() {
    var element = document.getElementById('loader');
@@ -41,6 +42,7 @@ function showLoading() {
 }
 
 function updateGen(start, end) {   
+   //not working
    showLoading()
    while (pokeContainer.firstChild) {
         pokeContainer.removeChild(pokeContainer.firstChild);
