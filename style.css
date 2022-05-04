@@ -123,9 +123,16 @@ h1 {
 	padding: 0;
 }
 
+.stats-card-img {
+	max-height: 250px;
+	max-width: 200px;
+}
+
 .moves {
 	padding-bottom: 10px;
 }
+
+
 
 .pokemon:hover,
 .pokemon:focus {
@@ -153,6 +160,41 @@ h1 {
 	border-radius: 15px;
 }
 
-.html {
-	width: 80%;
+
+.generation-btns {
+	margin-block: 20px;
 }
+
+
+.generation-btns > button {
+	background-color: #ffcb00;
+	color: #00428a;
+	border: 1px solid #00428a;
+}
+
+
+#loader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: gray;
+	color: white;
+	opacity: 1;
+	transition: 0.5s;
+	visibility: visible;
+}
+
+#loader.hidden {
+	opacity: 0;
+	visibility: hidden;
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+

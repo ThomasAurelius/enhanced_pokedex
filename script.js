@@ -1,3 +1,7 @@
+setTimeout(function() {
+  var element = document.getElementById('loader');
+  element.classList += " hidden";
+}, 3000);
 
 const pokeContainer = document.getElementById('poke-container')
 const pokeStatsContainer = document.getElementById('poke-stats-container')
@@ -29,13 +33,20 @@ const colors = {
    
 }
 
-function updateGen(start, end) {
+function showLoading() {
+   setTimeout(function() {
+   var element = document.getElementById('loader');
+   element.classList += " hidden";
+   }, 3000);
+}
+
+function updateGen(start, end) {   
+   showLoading()
    while (pokeContainer.firstChild) {
         pokeContainer.removeChild(pokeContainer.firstChild);
     }
    pokemonStart = start
-   pokemonEnd = end
-   
+   pokemonEnd = end   
    fetchPokemons()
 }
 
@@ -43,19 +54,15 @@ const main_types = Object.keys(colors)
 
 let pokemon_name = "bulbasaur"
 
-//original code
-
-const fetchPokemons = async () => {
+const fetchPokemons = async () => { 
    for(let i = pokemonStart; i <= pokemonEnd; i++) {
       await getPokemon(i)
    }
    const pokemonCards = document.querySelectorAll('.pokemon')
-pokemonCards.forEach((card) => {
-   card.addEventListener('click', (e) => {
-      
+   pokemonCards.forEach((card) => {
+      card.addEventListener('click', (e) => {      
       getPokemonName(e)
-      removeAllChildNodes(pokeStatsContainer)
-      //add a function to scroll to the top to see it [READY]
+      removeAllChildNodes(pokeStatsContainer)      
    })
 })
 
@@ -78,13 +85,10 @@ const getPokemon = async (id) => {
    createPokemonCard(data)
 }
 
-
-
 const createPokemonCard = (pokemon) => {
    const pokemonEl = document.createElement('div')
    pokemonEl.classList.add('pokemon')  
-   
-   
+      
    const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
 
    pokemonEl.setAttribute('id', name.toLowerCase())
@@ -130,8 +134,7 @@ const createPokemonCard = (pokemon) => {
 fetchPokemons()
 
 
-// Stats code
-
+// Stats card
 
 
 const fetchPokemonStats = async () => {
@@ -143,13 +146,15 @@ const getPokemonStats = async (name) => {
    const res = await fetch(url)
    const data = await res.json()
    createPokemonStatCard(data)
+   
+   
      
 }
 
 const createPokemonStatCard = (pokemon) => {
    const pokemonStatsEl = document.createElement('div')
    pokemonStatsEl.classList.add('pokemon-detail')
-   
+
    const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
    const ability1 = pokemon.abilities[0].ability.name[0].toUpperCase() + pokemon.abilities[0].ability.name.slice(1)
    const ability2 = pokemon.abilities[1].ability.name[0].toUpperCase() + pokemon.abilities[1].ability.name.slice(1)
@@ -174,12 +179,12 @@ const createPokemonStatCard = (pokemon) => {
    const color2 = colors[type2]
 
    pokemonStatsEl.style.backgroundImage = `linear-gradient(${color2}, ${color})`
-  
-
+   
+   
    const pokemonStatsInnerHTML = `
     <div>
-       <div class="img-container">
-         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg" alt="">
+       <div class="img-container ">
+         <img class="stats-card-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg" alt="">
           </div>
           <div class="info">
          <span class="number">#${id}</span>
@@ -189,6 +194,7 @@ const createPokemonStatCard = (pokemon) => {
     </div>
     <div>
       <div class="moves">
+
       <h3 class="stats">Ability 1: ${ability1}
       <h3 class="stats">Ability 2: ${ability2}
       </div>
@@ -221,10 +227,14 @@ const createPokemonStatCard = (pokemon) => {
        </div>
     </div>
    `
+
+  
    
    pokemonStatsEl.innerHTML = pokemonStatsInnerHTML
    
    pokeStatsContainer.appendChild(pokemonStatsEl)
+
+   
 
 }
 
