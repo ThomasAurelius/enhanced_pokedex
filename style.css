@@ -160,16 +160,11 @@ h1 {
 	border-radius: 15px;
 }
 
-
-.generation-btns {
-	margin-block: 20px;
-}
-
-
 .generation-btns > button {
 	background-color: #ffcb00;
 	color: #00428a;
 	border: 1px solid #00428a;
+	margin: 5px;
 }
 
 
@@ -201,3 +196,21 @@ h1 {
 }
 
 
+@media (max-width: 600px) {
+	.pokemon-detail {
+			display: flex;
+			flex-direction: column;
+			background-color: #eee;
+			border-radius: 10px;
+			box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+			margin: 10px;
+			padding: 20px;
+			text-align: center;
+			gap: 1rem;
+		}
+
+		.stats, .bar {
+			justify-self: center;
+			margin-inline: auto;
+		}
+}
