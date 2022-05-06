@@ -1,4 +1,4 @@
-//sets a 4 second loading screen to give time for pokemon to load.
+//sets a 5 second loading screen to give time for pokemon to load.
 setTimeout(function() {
   var element = document.getElementById('loader');
   element.classList += " hidden";
@@ -10,7 +10,6 @@ const pokeStatsContainer = document.getElementById('poke-stats-container')
 let pokemonStart = 1
 let pokemonEnd = 151
 
-let pokemonCount = 50
 const colors = {
    fire: '#d82b34',
    fairy: '#fceaff',
@@ -36,7 +35,6 @@ const colors = {
 const main_types = Object.keys(colors)
 
 
-
 //show loading screen everytime a generation button gets pushed and api call is made
 function showLoading() {
    document.getElementById('loader').classList.remove('hidden')
@@ -56,9 +54,6 @@ function updateGen(start, end) {
    pokemonEnd = end   
    fetchPokemons()
 }
-
-
-
 
 //API call
 const getPokemon = async (id) => {
