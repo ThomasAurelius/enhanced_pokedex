@@ -115,7 +115,7 @@ const createPokemonCard = (pokemon) => {
       poke_type2 = poke_type 
    }
 
-   const type = main_types.find(type => poke_type.indexOf(type) > -1)
+   const type = main_types.find(type => poke_type[0].indexOf(type) > -1)
    const type2 = main_types.find(type => poke_type2.indexOf(type) > -1)
 
    const color = colors[type]
