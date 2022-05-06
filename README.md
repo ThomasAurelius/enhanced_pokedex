@@ -30,11 +30,11 @@ Thomas Aurelius
 ## Version History
 
 -  0.5
-   -  Added in loading screen
+   -  Added in timed loading screen
 -  0.4
-   -  Added in generation buttons
+   -  Added in custom pagination generation buttons
 -  0.3
-   -  Added in stats card onclick function
+   -  Added in stats card and onclick function
 -  0.2
    -  Added gradient background for pokemon with 2 types
 -  0.1
