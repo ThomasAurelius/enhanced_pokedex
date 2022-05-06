@@ -6,8 +6,10 @@ setTimeout(function() {
 
 const pokeContainer = document.getElementById('poke-container')
 const pokeStatsContainer = document.getElementById('poke-stats-container')
+
 let pokemonStart = 1
 let pokemonEnd = 151
+
 let pokemonCount = 50
 const colors = {
    fire: '#d82b34',
