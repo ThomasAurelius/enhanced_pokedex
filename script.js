@@ -29,9 +29,7 @@ const colors = {
 	flying: '#30aae2',
 	fighting: '#E6E0D4',	
    steel: '#979595',
-   ice: '#6eb8e9'
-   
-   
+   ice: '#6eb8e9'   
 }
 const main_types = Object.keys(colors)
 
@@ -43,7 +41,7 @@ function showLoading() {
    setTimeout(function() {
    var element = document.getElementById('loader');
    element.classList += " hidden";
-   }, 3000);
+   }, 4000);
 }
 
 //used to update start and end API points to match pokemon generations
